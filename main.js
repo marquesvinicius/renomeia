@@ -16,9 +16,6 @@ function processFile() {
 
     Papa.parse(contents, {
       header: true, // Indica que a primeira linha contém títulos das colunas
-      skipEmptyLines: 'greedy', // Pula linhas em branco
-      dynamicTyping: true, // Tenta converter os valores para o tipo apropriado
-
       complete: function (results) {
         const data = results.data;
 
@@ -32,19 +29,16 @@ function processFile() {
 
         console.log('Número de imagens a processar:', numeroDeImagens); // Adicione esta linha
 
-        for (const row of data) {
-          // Verifique se a linha tem pelo menos duas colunas com dados
-          if (row[0] && row[1]) {
-            const nome = row[0];
-            const url = row[1];
-            renamedImages.push({ nome, url });
-          }
-        }
+        data.forEach((row) => {
+          const nome = row.NOME;
+          const url = row.IMAGEM;
+          renamedImages.push({ nome, url });
+        });
 
         console.log('Dados das imagens renomeadas:', renamedImages); // Adicione esta linha
 
         const zip = new JSZip();
-        const imagePromises = [];
+        const imagePromises = []; // Declare a variável imagePromises
 
         renamedImages.forEach((image) => {
           const imagePromise = fetch(image.url)
@@ -58,7 +52,7 @@ function processFile() {
 
         // Aguarda o download de todas as imagens
         Promise.all(imagePromises).then(() => {
-          console.log('Todas as imagens foram baixadas com sucesso.');
+          console.log('Todas as imagens foram baixadas com sucesso.'); // Adicione esta linha
 
           // Gera o arquivo ZIP e cria o link de download
           zip.generateAsync({ type: 'blob' }).then((content) => {
