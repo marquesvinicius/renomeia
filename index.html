@@ -2,26 +2,102 @@
 <html>
 
 <head>
-  <title>Upload e Download de Imagens Renomeadas</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>RENOMEIA</title>
+  <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+  <!-- <link rel="stylesheet" href="modo-noturno.css"> -->
+  <link rel="stylesheet" href="noturn-button.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </head>
 
 <body>
-  <div id="container">
-    <h1>Upload e Download de Imagens Renomeadas</h1>
 
-    <input type="file" id="fileInput" accept=".csv">
-    <button onclick="processFile()">Upload da Tabela</button>
 
-    <a id="downloadLink" style="display: none;"></a>
+  <main class="container mt-5">
+    <h1 class="display-4 text-center">Renomeador de Imagens</h1>
 
-    <!-- Inclua as bibliotecas "papaparse.min.js" e "jszip.min.js" -->
-    <script src="node_modules/papaparse/papaparse.min.js"></script>
-    <script src="node_modules/jszip/dist/jszip.min.js"></script>
+    <div class="form-group p-3 text-center">
+      <div class="col-sm-6 mx-auto">
+        <input type="file" id="fileInput" accept=".csv" class="form-control p-1">
+      </div>
+    </div>
 
-    <!-- Inclua o arquivo JavaScript principal -->
-    <script src="main.js"></script>
+    <div class="d-flex justify-content-center mb-3">
+      <button onclick="processFile()" class="btn btn-primary">Enviar Tabela</button>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <a id="downloadLink" style="display: none;"></a>
+    </div>
+  </main>
+
+  <div class="slider-container">
+    <div class="row">
+      <div class="col text-center mb-2"> <!-- Adicione a classe "mb-2" para adicionar margem inferior -->
+        <p id="modo-noturno-text" class="mb-0">Modo Noturno</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-center">
+        <label class="switch">
+          <input type="checkbox" id="nightModeToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
   </div>
+
+  <section id="objetivo" class="container mt-4  bg-light p-4  ">
+    <h2>Objetivo:</h2>
+    <p>Este site permite que você renomeie imagens em massa a partir de uma tabela (no formato .csv) que você inserir.</p>
+  </section>
+
+  <section class="container instructions mt-4 bg-light p-4">
+    <h2>Instruções:</h2>
+    <ol>
+      <li>Passo 1: Prepare a tabela no formato .csv (ou <a id="downloadModelLink" href="modelo_tabela.csv" download>baixe o modelo da tabela aqui</a> e insira os dados) com as informações das imagens. Cada linha da tabela deve conter o nome da imagem e a URL da imagem, separados por vírgula (consulte o exemplo abaixo).</li>
+      <li>Passo 2: Certifique-se de que a primeira linha da tabela contenha os títulos "NOME" e "IMAGEM" para identificar as colunas.</li>
+      <li>Passo 3: Selecione a tabela .csv usando o botão "Enviar Tabela" acima.</li>
+      <li>Passo 4: Aguarde o processamento da tabela e o download do arquivo ZIP contendo as imagens renomeadas.</li>
+      <li>Passo 5: Baixe o arquivo ZIP e tenha as imagens renomeadas prontas para uso.</li>
+    </ol>
+    <h3>Exemplo de Tabela .csv:</h3>
+    <table class="example-table table">
+      <thead>
+        <tr>
+          <th>NOME</th>
+          <th>IMAGEM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>imagem1</td>
+          <td>https://exemplo.com/imagens/imagem1.jpg</td>
+        </tr>
+        <tr>
+          <td>imagem2</td>
+          <td>https://exemplo.com/imagens/imagem2.png</td>
+        </tr>
+        <tr>
+          <td>imagem3</td>
+          <td>https://exemplo.com/imagens/imagem3.gif</td>
+        </tr>
+      </tbody>
+    </table>
+    <p><strong>Nota:</strong> Este site suporta apenas imagens nos formatos .jpg (ou .jpeg), .png ou .gif. Certifique-se de que as URLs das imagens estejam corretas e a imagem esteja em um dos formatos suportados.</p>
+  </section>
+
+  <!-- Inclua as bibliotecas "papaparse.min.js" e "jszip.min.js" diretamente no corpo do documento -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <!-- Inclua o arquivo JavaScript principal -->
+  <script src="main.js"></script>
+  <script src="modo-noturno.js"></script>
 </body>
 
 </html>
