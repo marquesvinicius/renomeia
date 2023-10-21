@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
     body.classList.toggle('bg-dark', nightModeToggle.checked);
     fileInput.classList.toggle('bg-dark', nightModeToggle.checked);
     fileInput.classList.toggle('text-white', nightModeToggle.checked);
-    objetivoSection.classList.toggle('bg-dark', nightModeToggle.checked);
+    objetivoSection.classList.toggle('bg-secondary', nightModeToggle.checked);
     objetivoSection.classList.toggle('text-white', nightModeToggle.checked);
-    instructionsSection.classList.toggle('bg-dark', nightModeToggle.checked);
+    instructionsSection.classList.toggle('bg-secondary', nightModeToggle.checked);
     instructionsSection.classList.toggle('text-white', nightModeToggle.checked);
     h1.classList.toggle('text-white', nightModeToggle.checked);
     modoNoturnoText.classList.toggle('text-white', nightModeToggle.checked);
