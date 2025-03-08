@@ -52,6 +52,28 @@ body {
   transition: 0.4s;
 }
 
+body.bg-dark .form-control {
+  background-color: #343a40;
+  color: #fff;
+  border-color: #495057;
+}
+
+body.bg-dark a {
+  color: #8bb9fe;
+}
+
+body.bg-dark .btn-primary {
+  background-color: #375a9e;
+  border-color: #375a9e;
+}
+
+/* Melhora na visualização de alertas no modo escuro */
+body.bg-dark .alert-info {
+  background-color: #1a3a4a;
+  color: #9ee3ff;
+  border-color: #0d6efd;
+}
+
 input:checked + .slider {
   background-color: #2196F3;
 }

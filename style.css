@@ -1,0 +1,240 @@
+/* Estilos base */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo para a logo no header */
+.logo-header {
+  height: 120px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  /* Garante que a logo fique branca */
+  transition: transform 0.3s ease;
+}
+
+/* Efeito hover suave na logo */
+.logo-header:hover {
+  transform: scale(1.05);
+}
+
+/* Transições suaves para modos claro/escuro */
+.card,
+.form-control,
+.alert,
+.btn,
+.table,
+section,
+.list-group-item {
+  transition: all 0.3s ease;
+}
+
+/* Estilos aprimorados para o botão de modo noturno */
+.night-mode-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 10px 18px;
+  border-radius: 50px !important;
+  background: linear-gradient(145deg, #0d6efd, #0b5ed7) !important;
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4),
+    0 8px 25px rgba(0, 0, 0, 0.1) !important;
+  border: none;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  z-index: 1100;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+}
+
+/* Estilização do switch - Corrigido */
+.form-switch .form-check-input {
+  width: 3em;
+  height: 1.6em;
+  cursor: pointer;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255, 255, 255, 0.9)'/%3e%3c/svg%3e");
+}
+
+/* Estado ativo do switch com cores invertidas */
+.form-switch .form-check-input:checked {
+  background-color: #122f65 !important;
+  /* Azul escuro quando ativado */
+  border-color: #0a1c3d !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23ffffff'/%3e%3c/svg%3e");
+}
+
+/* Modificando a bolinha do toggle quando ativado */
+.form-switch .form-check-input:checked::before {
+  left: calc(100% - 24px);
+}
+
+/* Mudando o texto quando o modo noturno está ativado */
+input:checked~.form-check-label i {
+  color: #ffcc29 !important;
+  /* Amarelo para o ícone da lua quando ativado */
+  transform: rotate(15deg);
+  text-shadow: 0 0 5px rgba(255, 204, 41, 0.7);
+}
+
+.night-mode-float:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.5),
+    0 12px 28px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Configuração do form-check dentro do botão flutuante */
+.night-mode-float .form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilização do label */
+.night-mode-float .form-check-label {
+  color: white !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* Animação do ícone */
+.night-mode-float .form-check-label i {
+  margin-left: 6px;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.night-mode-float:hover .form-check-label i {
+  transform: rotate(15deg);
+}
+
+/* Estilização do switch */
+.night-mode-float .form-check-input {
+  width: 3em;
+  height: 1.6em;
+  cursor: pointer;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.night-mode-float .form-check-input:checked {
+  background-color: #ffffff;
+  border-color: #ffffff;
+}
+
+.night-mode-float .form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+/* Responsividade para dispositivos médios */
+@media (max-width: 768px) {
+  .night-mode-float {
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 15px;
+  }
+
+  .night-mode-float .form-check-label {
+    font-size: 0.8rem;
+  }
+
+  .form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.4em;
+  }
+
+  .logo-header {
+    height: 100px;
+  }
+
+  header .display-4 {
+    font-size: 2.5rem;
+  }
+
+}
+
+/* Responsividade para dispositivos pequenos */
+@media (max-width: 480px) {
+  
+  .logo-header {
+    height: 100px;
+    margin-bottom: 10px;
+  }
+
+  header .display-4 {
+    font-size: 2rem;
+  }
+
+  .header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-text p {
+    text-align: start !important;
+  }
+
+  .night-mode-float {
+    width: auto;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .night-mode-float .form-check {
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .night-mode-float .form-check-label {
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .night-mode-float .form-check-label span {
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .night-mode-float .form-check-label i {
+    margin-left: 0;
+    margin-top: 2px;
+    font-size: 1.1rem;
+  }
+
+  .form-switch .form-check-input {
+    width: 2.8em;
+    height: 1.4em;
+    margin: 0 auto;
+  }
+}
+
+/* Ajuste extra para telas muito pequenas */
+@media (max-width: 360px) {
+  .night-mode-float {
+    padding: 8px 12px;
+    right: 15px;
+    bottom: 15px;
+  }
+}
